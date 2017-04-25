@@ -1,0 +1,57 @@
+﻿@using Models;
+@model BusinessLogic.Model.FilterEntityContainerWrapper<Subject>
+@{
+    var defaultFilterModel = StudentSubjectFilterModel.Default();
+}
+
+@{ var studentsModel = (List<Student>)ViewBag.AllStudents; }
+<div class="filter-container">
+
+    <div class="filter-entry">
+        <label>Subjects</label>
+
+        @{
+            var subjects = (List<Subject>)ViewBag.Subjects;
+            var defaultSelectedSubjectItem = new SelectListItem()
+            {
+                Disabled = false,
+                Group = null,
+                Selected = true,
+                Text = "All",
+                Value = Guid.Empty.ToString()
+            };
+            var subjectOptions = new List<SelectListItem>();
+            subjectOptions.Add(defaultSelectedSubjectItem);
+
+            subjectOptions.AddRange(subjects.Select(subject => new SelectListItem
+            {
+                Text = subject.SubjectName,
+                Value = subject.Id.ToString()
+            }).OrderBy(o => o.Text.Trim()));
+        }
+        @Html.DropDownList("subjectSelectId", subjectOptions, new
+   {
+       id = "subjectSelectId",
+       @class = "pull-left filterable-select"
+   })
+    </div>
+
+    <div id="studentTable">
+        @Html.Partial("~/Views/Student/_studentList.cshtml", studentsModel)
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/custom/ajaxHelper.js"></script>
+    <script src="~/Scripts/custom/studentModule.js"></script>
+<script type="text/javascript">
+ 
+    $(".filterable-select").change(function () {
+        studentModule.filterStudents();
+    });
+    
+</script>
+
+    
+
+</div>
+

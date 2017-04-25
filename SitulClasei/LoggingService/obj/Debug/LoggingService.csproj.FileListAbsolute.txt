@@ -1,0 +1,6 @@
+C:\Users\Mihai\Desktop\Progamare\SitulClasei\LoggingService\bin\Debug\LoggingService.dll
+C:\Users\Mihai\Desktop\Progamare\SitulClasei\LoggingService\bin\Debug\LoggingService.pdb
+C:\Users\Mihai\Desktop\Progamare\SitulClasei\LoggingService\bin\Debug\NLog.dll
+C:\Users\Mihai\Desktop\Progamare\SitulClasei\LoggingService\bin\Debug\NLog.xml
+C:\Users\Mihai\Desktop\Progamare\SitulClasei\LoggingService\obj\Debug\LoggingService.dll
+C:\Users\Mihai\Desktop\Progamare\SitulClasei\LoggingService\obj\Debug\LoggingService.pdb

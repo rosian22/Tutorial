@@ -1,0 +1,5 @@
+C:\Users\Mihai\Desktop\Progamare\SitulClasei\Models\bin\Debug\Models.dll
+C:\Users\Mihai\Desktop\Progamare\SitulClasei\Models\bin\Debug\Models.pdb
+C:\Users\Mihai\Desktop\Progamare\SitulClasei\Models\obj\Debug\Models.dll
+C:\Users\Mihai\Desktop\Progamare\SitulClasei\Models\obj\Debug\Models.pdb
+C:\Users\Mihai\Desktop\Progamare\SitulClasei\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache

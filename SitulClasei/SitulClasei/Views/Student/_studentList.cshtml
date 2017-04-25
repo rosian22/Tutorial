@@ -1,0 +1,96 @@
+﻿@using BusinessLogic.Model
+@model EntityContainer<Models.Student>
+
+
+
+@functions {
+    private string GetPageActiveClass(int pageIndex)
+    {
+        return Model.CurrentPage == pageIndex - 1 ? "active" : "";
+    }
+}
+
+@if (Model == null || Model.Data.Count == 0)
+{
+    <label>No student at this subject! </label>
+}
+else
+{
+    <table class="table" id="Student_Table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Surname
+                </th>
+                <th>
+                    Number
+                </th>
+                <th>
+                    ASPID
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Age
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Data)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AspID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+    <ul class="pagination">
+        @if (Model.CurrentPage != 0)
+        {
+            <li>
+                <a href="javascript:void();" onclick="AtestModule.getStudentsPage($('#student-tabs').tabs('option', 'active'), @Model.CurrentPage)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="@GetPageActiveClass(i)">
+                <a href="javascript:void();" onclick="AtestModule.getStudentsPage($('#student-tabs').tabs('option', 'active'), @i)">@i</a>
+            </li>
+        }
+        @if (Model.CurrentPage != Model.TotalPages - 1)
+        {
+            <li>
+                <a href="javascript:void();" onclick="AtestModule.getStudentsPage($('#student-tabs').tabs('option', 'active'), @Model.CurrentPage + 2)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+    </ul>
+
+
+}

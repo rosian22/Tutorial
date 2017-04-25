@@ -1,0 +1,47 @@
+﻿@using BusinessLogic.Model;
+@using SitulClasei.Common.Extensions
+@using Common.Enums
+@using SitulClasei.Controllers
+@model IList<EntityContainer<Models.Student>>
+
+<div class="tabs-container custom-tabs" id="student-tabs">
+    <ul class="clearfix pull-left tabs-container-content">
+        <li class="tab">
+            <a href="#pending-students" title="Pending" data-entry="0">
+                <span class="tabs-entry">
+                    <span>PENDING</span>
+                </span>
+            </a>
+        </li>
+        <li class="tab">
+            <a href="#active-students" title="Active" data-entry="1">
+                <span class="tabs-entry">
+                    <span>ACTIVE</span>
+                </span>
+            </a>
+        </li>
+        <li class="tab">
+            <a href="#declined-students" title="Declined" data-entry="2">
+                <span class="tabs-entry">
+                    <span>DECLINED</span>
+                </span>
+            </a>
+        </li>
+    </ul>
+    <div id="pending-students">
+        @Html.Partial("StudentController/Views/_studentList", Model.First(m => m.Status == (int)UserStatus.Pending))
+    </div>
+    <div id="active-students">
+        @Html.Partial("StudentController/Views/_studentList", Model.First(m => m.Status == (int)UserStatus.Approved))
+    </div>
+    <div id="declined-students">
+        @Html.Partial("StudentController/Views/_studentList", Model.First(m => m.Status == (int)UserStatus.Rejected))
+    </div>
+</div>
+
+<script type="text/javascript">
+    if (typeof $ != 'undefined') {
+        $("#students-count").text('@ViewBag.TotalStudentCount');
+    }
+</script>
+
